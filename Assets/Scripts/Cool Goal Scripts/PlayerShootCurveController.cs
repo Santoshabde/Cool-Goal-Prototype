@@ -71,11 +71,11 @@ public class PlayerShootCurveController : MonoBehaviour
     {
         Handles.DrawBezier(initialShootPosition, finalShotPosition, bezierCurve_Tangent1, bezierCurve_Tangent2, Color.red, null, 3f);
 
-      /*  Gizmos.color = Color.red;
+        Gizmos.color = Color.red;
         foreach (var item in BezierCurve.GetAllBazierPoints(initialShootPosition, bezierCurve_Tangent1, bezierCurve_Tangent2, finalShotPosition))
         {
             Gizmos.DrawSphere(item.point, 0.1f);
-        }*/
+        }
     }
 
     #endregion
