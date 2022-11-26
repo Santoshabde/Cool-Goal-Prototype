@@ -9,7 +9,6 @@ public class BallController : MonoBehaviour
     private (Vector3, Vector3, Vector3, Vector3) bezierPointToFollow;
     private bool moveTheBall = false;
     private float time = 0;
-    List<ShapePointAndDirection> totalBazierCurvePoints;
 
     private void Start()
     {
@@ -19,47 +18,35 @@ public class BallController : MonoBehaviour
     private void OnFinalShot((Vector3, Vector3, Vector3, Vector3) bezierPointSet)
     {
         bezierPointToFollow = bezierPointSet;
-        totalBazierCurvePoints = BezierCurve.GetAllBazierPoints(bezierPointSet.Item1, bezierPointSet.Item3, bezierPointSet.Item4, bezierPointSet.Item2);
+        StartCoroutine(ShootTheBall());
+    }
+
+    private IEnumerator ShootTheBall()
+    {
+        yield return new WaitForSeconds(0.6f);
         moveTheBall = true;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if(moveTheBall)
         {
-            Vector3 nearestPoint = FindNearestPoint();
-            //GetComponent<Rigidbody>().AddForce(BezierCurve.GetBazierTangent(bezierPointToFollow.Item1, bezierPointToFollow.Item3, bezierPointToFollow.Item4, bezierPointToFollow.Item2, time) * 30);
-            GetComponent<Rigidbody>().AddForce((nearestPoint - transform.position) * 150);
-
-            if(nearestPoint == totalBazierCurvePoints[totalBazierCurvePoints.Count - 1].point)
+            if (time >= 1f)
             {
                 moveTheBall = false;
+                GetComponent<Rigidbody>().isKinematic = false;
+                //GetComponent<Rigidbody>().velocity = (BezierCurve.GetBazierTangent(bezierPointToFollow.Item1, bezierPointToFollow.Item3, bezierPointToFollow.Item4, bezierPointToFollow.Item2, 0.95f)).normalized * speed;
+                return;
             }
+
+            GetComponent<Rigidbody>().MovePosition(BezierCurve.GetBezierPoint(bezierPointToFollow.Item1, bezierPointToFollow.Item3, bezierPointToFollow.Item4, bezierPointToFollow.Item2, time));
+            time += Time.deltaTime * ballSpeed;
         }
     }
 
-    private Vector3 FindNearestPoint()
+    private void OnCollisionEnter(Collision collision)
     {
-        Vector3 nearestPoint = Vector3.zero;
-
-        float shortestDistance = 1000f;
-
-        int i = 0;
-        foreach (var item in totalBazierCurvePoints)
-        {
-            if(i < 2)
-            {
-                i++;
-                continue;
-            }
-
-            if((item.point - transform.position).magnitude < shortestDistance)
-            {
-                shortestDistance = (item.point - transform.position).magnitude;
-                nearestPoint = item.point;
-            }
-        }
-
-        return nearestPoint;
+        moveTheBall = false;
+        GetComponent<Rigidbody>().isKinematic = false;
     }
 }
