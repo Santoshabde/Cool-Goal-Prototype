@@ -29,6 +29,13 @@ public class BallController : MonoBehaviour
 
     private void Update()
     {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.13f);
+        if(hitColliders.Length > 1)
+        {
+            moveTheBall = false;
+            GetComponent<Rigidbody>().isKinematic = false;
+        }
+
         if(moveTheBall)
         {
             if (time >= 1f)
@@ -42,11 +49,5 @@ public class BallController : MonoBehaviour
             GetComponent<Rigidbody>().MovePosition(BezierCurve.GetBezierPoint(bezierPointToFollow.Item1, bezierPointToFollow.Item3, bezierPointToFollow.Item4, bezierPointToFollow.Item2, time));
             time += Time.deltaTime * ballSpeed;
         }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        moveTheBall = false;
-        GetComponent<Rigidbody>().isKinematic = false;
     }
 }
