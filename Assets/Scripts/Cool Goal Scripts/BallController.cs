@@ -8,6 +8,7 @@ public class BallController : MonoBehaviour
 
     private (Vector3, Vector3, Vector3, Vector3) bezierPointToFollow;
     private bool moveTheBall = false;
+    private bool executeUpdate = false;
     private float time = 0;
 
     private void Start()
@@ -23,14 +24,30 @@ public class BallController : MonoBehaviour
 
     private IEnumerator ShootTheBall()
     {
+        executeUpdate = true;
         yield return new WaitForSeconds(0.6f);
         moveTheBall = true;
     }
 
+    private int currentHitColliderLength = 0;
+
     private void Update()
     {
+        if (!executeUpdate)
+            return;
+
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.13f);
-        if(hitColliders.Length > 1)
+
+        if (currentHitColliderLength != hitColliders.Length)
+        {
+            if (hitColliders[0].transform.GetComponent<IBallCollidable>() != null)
+                hitColliders[0].transform.GetComponent<IBallCollidable>().OnBallCollision();
+
+            currentHitColliderLength = hitColliders.Length;
+        }
+
+
+        if (hitColliders.Length > 1)
         {
             moveTheBall = false;
             GetComponent<Rigidbody>().isKinematic = false;

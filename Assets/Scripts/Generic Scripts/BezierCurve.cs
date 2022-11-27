@@ -40,7 +40,7 @@ public class BezierCurve
         return tangent;
     }
 
-    public static List<ShapePointAndDirection> GetAllBazierPoints(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3)
+    public static List<ShapePointAndDirection> GetAllEquiDistancePointsOnBezierCurve(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float distanceBetweenPoints = 0.5f, float deltaIncrement = 0.01f)
     {
         List<ShapePointAndDirection> totalBazierCurvePoints = new List<ShapePointAndDirection>();
 
@@ -57,13 +57,13 @@ public class BezierCurve
                 Vector3 nextPoint = GetBezierPoint(p0, p1, p2, p3, i);
                 Vector3 nextDirection = GetBazierTangent(p0, p1, p2, p3, i);
 
-                if (Vector3.Distance(currentPoint, nextPoint) >= 0.5f)
+                if (Vector3.Distance(currentPoint, nextPoint) >= distanceBetweenPoints)
                 {
                     totalBazierCurvePoints.Add(new ShapePointAndDirection() { point = nextPoint, direction = nextDirection });
                     currentPoint = nextPoint;
                 }
 
-                i += 0.01f;
+                i += deltaIncrement;
             }
 
         return totalBazierCurvePoints;

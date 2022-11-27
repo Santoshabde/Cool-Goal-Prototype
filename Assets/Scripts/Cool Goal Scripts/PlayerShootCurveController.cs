@@ -62,7 +62,7 @@ public class PlayerShootCurveController : MonoBehaviour
             bezierCurve_Tangent2 = new Vector3(finalShotPosition.x + (curveDragCofficient_target * InputController.Instance.DragAmount), finalShotPosition.y, finalShotPosition.z);
         }
 
-        bezierCurveBuilder.BuildBezierCurve(initialShootPosition, finalShotPosition, bezierCurve_Tangent1, bezierCurve_Tangent2);
+        bezierCurveBuilder.BuildBezierCurve(initialShootPosition, finalShotPosition, bezierCurve_Tangent1, bezierCurve_Tangent2, BezierCurveBuilderType.LineRenderer);
     }
 
 
