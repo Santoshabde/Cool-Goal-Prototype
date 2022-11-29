@@ -8,7 +8,6 @@ public class PlayerShootCurveController : MonoBehaviour
 {
     [SerializeField] private float curveDragCofficient_source;
     [SerializeField] private float curveDragCofficient_target;
-    [SerializeField] private Transform initialBallPosition;
     [SerializeField] private BezierCurveBuilder bezierCurveBuilder;
 
     private GoalPost goalPostInLevel;
@@ -24,6 +23,8 @@ public class PlayerShootCurveController : MonoBehaviour
     {
         FindGoalPostInGame();
         InputController.Instance.ShootActionActivated += OnShoot;
+
+        initialShootPosition = FindObjectOfType<BallController>().transform.position;
     }
 
     private void OnDestroy()
@@ -55,7 +56,6 @@ public class PlayerShootCurveController : MonoBehaviour
 
     private void BuildBezierCurveShootPath()
     {
-        initialShootPosition = initialBallPosition.position;
         finalShotPosition = new Vector3(goalAnimationCurve.Evaluate(InputController.Instance.DragAmount), 0.5f, -4f);
         bezierCurve_Tangent1 = new Vector3(initialShootPosition.x + (curveDragCofficient_source * InputController.Instance.DragAmount), initialShootPosition.y, initialShootPosition.z);
         if (InputController.Instance.DragAmount <= goalPostInLevel.DragAmountToReachMax)

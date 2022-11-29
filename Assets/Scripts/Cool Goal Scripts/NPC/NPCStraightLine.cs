@@ -9,7 +9,7 @@ public class NPCStraightLine : INPCFormationShape
         foreach (var item in characters)
         {
             item.transform.position = initialPoint;
-            initialPoint += new Vector3(-0.55f, 0, 0);
+            initialPoint += new Vector3(-0.70f, 0, 0);
         }
     }
 }
