@@ -37,15 +37,7 @@ public class BallController : MonoBehaviour
             return;
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.13f);
-
-        if (currentHitColliderLength != hitColliders.Length)
-        {
-            if (hitColliders[0].transform.GetComponent<IBallCollidable>() != null)
-                hitColliders[0].transform.GetComponent<IBallCollidable>().OnBallCollision();
-
-            currentHitColliderLength = hitColliders.Length;
-        }
-
+        HandleCollisionEffectsOnCollidedObjects(hitColliders);
 
         if (hitColliders.Length > 1)
         {
@@ -59,12 +51,22 @@ public class BallController : MonoBehaviour
             {
                 moveTheBall = false;
                 GetComponent<Rigidbody>().isKinematic = false;
-                //GetComponent<Rigidbody>().velocity = (BezierCurve.GetBazierTangent(bezierPointToFollow.Item1, bezierPointToFollow.Item3, bezierPointToFollow.Item4, bezierPointToFollow.Item2, 0.95f)).normalized * speed;
                 return;
             }
 
             GetComponent<Rigidbody>().MovePosition(BezierCurve.GetBezierPoint(bezierPointToFollow.Item1, bezierPointToFollow.Item3, bezierPointToFollow.Item4, bezierPointToFollow.Item2, time));
             time += Time.deltaTime * ballSpeed;
+        }
+    }
+
+    private void HandleCollisionEffectsOnCollidedObjects(Collider[] hitColliders)
+    {
+        if (currentHitColliderLength != hitColliders.Length)
+        {
+            if (hitColliders[0].transform.GetComponent<IBallCollidable>() != null)
+                hitColliders[0].transform.GetComponent<IBallCollidable>().OnBallCollision();
+
+            currentHitColliderLength = hitColliders.Length;
         }
     }
 }

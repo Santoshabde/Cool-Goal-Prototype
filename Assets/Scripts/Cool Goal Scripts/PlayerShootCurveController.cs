@@ -28,6 +28,7 @@ public class PlayerShootCurveController : MonoBehaviour
 
     private void OnDestroy()
     {
+        if(InputController.Instance != null)
         InputController.Instance.ShootActionActivated -= OnShoot;
     }
 
