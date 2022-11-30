@@ -6,7 +6,7 @@ public class Obstrucle_SnowMan : MonoBehaviour, IBallCollidable
 {
     [SerializeField] private List<GameObject> objectsToSeperate;
 
-    public void OnBallCollision()
+    public void OnBallCollision(Vector3 contactPointPosition)
     {
         objectsToSeperate.ForEach(t => t.transform.parent = null);
         foreach (var item in objectsToSeperate)

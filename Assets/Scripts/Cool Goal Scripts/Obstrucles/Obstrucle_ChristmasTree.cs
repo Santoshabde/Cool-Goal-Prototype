@@ -11,7 +11,7 @@ public class Obstrucle_ChristmasTree : MonoBehaviour, IBallCollidable
     [SerializeField] private int animationEventsCount;
     [SerializeField, Range(0, 1)] private float singleEventTweenTime; 
 
-    public void OnBallCollision()
+    public void OnBallCollision(Vector3 contactPointPosition)
     {
         SwayTreeAnimation();
     }

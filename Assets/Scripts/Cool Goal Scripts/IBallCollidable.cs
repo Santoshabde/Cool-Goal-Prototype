@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IBallCollidable
 {
-    void OnBallCollision();
+    void OnBallCollision(Vector3 contactPointPosition);
 }

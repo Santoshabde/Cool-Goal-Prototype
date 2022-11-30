@@ -59,12 +59,21 @@ public class BallController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (GameStateController.Instance.CurrentState.GetType() == typeof(GameSubLevelProgress))
+        {
+            if (other.tag == "WinCollider")
+                other.GetComponent<Obstrucle_GoalPostWinCollider>().OnBallCollision(other.ClosestPoint(transform.position));
+        }
+    }
+
     private void HandleCollisionEffectsOnCollidedObjects(Collider[] hitColliders)
     {
         if (currentHitColliderLength != hitColliders.Length)
         {
             if (hitColliders[0].transform.GetComponent<IBallCollidable>() != null)
-                hitColliders[0].transform.GetComponent<IBallCollidable>().OnBallCollision();
+                hitColliders[0].transform.GetComponent<IBallCollidable>().OnBallCollision(hitColliders[0].ClosestPoint(transform.position));
 
             currentHitColliderLength = hitColliders.Length;
         }

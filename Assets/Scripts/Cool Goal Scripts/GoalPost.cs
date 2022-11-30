@@ -13,6 +13,7 @@ public class GoalPost : MonoBehaviour
     [SerializeField] private float goalPostNearMaxLength;
     [SerializeField] private float dragAmountToReachMax;
     [SerializeField] private List<ParticleSystem> confettiEffects;
+    [SerializeField] private ParticleSystem hitConfetti;
 
     public float DragAmountToReachMax => dragAmountToReachMax;
 
@@ -37,10 +38,9 @@ public class GoalPost : MonoBehaviour
         return goalCurve;
     }
 
-    private void OnGoalVFX()
+    private void OnGoalVFX(Vector3 contactPointPosition)
     {
         goalMaterial.DOColor(new Color(goalMaterial.color.r, goalMaterial.color.g, goalMaterial.color.b, 0.5f), 0.1f).SetLoops(8, LoopType.Yoyo);
-
         DOTween.Sequence().AppendInterval(0.5f).AppendCallback(() =>
         {
             confettiEffects.ForEach(t => t.Play());

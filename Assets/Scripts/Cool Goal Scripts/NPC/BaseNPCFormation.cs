@@ -36,7 +36,7 @@ public class BaseNPCFormation : MonoBehaviour, IBallCollidable
         transform.position += (idleRoamPoints[currentPositionCount].position - transform.position).normalized * Time.deltaTime * characterMovementSpeed;
     }
 
-    public void OnBallCollision()
+    public void OnBallCollision(Vector3 contactPointPosition)
     {
         //Activate the ragdoll
         transform.gameObject.SetActive(false);
