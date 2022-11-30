@@ -30,10 +30,16 @@ public class GameSubLevelCompleted : BaseState
 
     IEnumerator SubLevelCompletedAction()
     {
-        yield return new WaitForSeconds(3f);
+        bool nextSubLevelAvailableInSameLevel = gameStateController.SubLevelLoader.IncrementSubLevel();
+
+        yield return new WaitForSeconds(2.5f);
+
+        InGameLevelTransitions.Instance.SubLevelTransition(SubLevelLoader.nextSubLevelIndex + 1);
+
+        yield return new WaitForSeconds(2f);
 
         //If level completed
-        if (!gameStateController.SubLevelLoader.IncrementSubLevel())
+        if (!nextSubLevelAvailableInSameLevel)
         {
             gameStateController.SwitchState(new GameMainLevelComplete(gameStateController));
         }

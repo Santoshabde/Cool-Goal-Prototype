@@ -32,3 +32,11 @@ MonoBehaviour:
       cameraPositon: {x: 0, y: 0, z: 0}
       cameraRotation: {x: 0, y: 0, z: 0}
       cameraFOV: 0
+    - subLevelID: 3
+      playerBallSetPosition: {x: -0.157, y: 0, z: -11.27107}
+      goalPostPosition: {x: 0.05, y: 0.55, z: -3.4}
+      goalPostRotation: {x: 0, y: -90, z: 0}
+      goalpostScale: {x: 0, y: 0.5420582, z: 0.8533415}
+      cameraPositon: {x: 0, y: 0, z: 0}
+      cameraRotation: {x: 0, y: 0, z: 0}
+      cameraFOV: 0

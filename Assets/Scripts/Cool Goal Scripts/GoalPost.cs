@@ -12,12 +12,15 @@ public class GoalPost : MonoBehaviour
     [SerializeField] private float goalPostMaxLength;
     [SerializeField] private float goalPostNearMaxLength;
     [SerializeField] private float dragAmountToReachMax;
+    [SerializeField] private List<ParticleSystem> confettiEffects;
 
     public float DragAmountToReachMax => dragAmountToReachMax;
 
     private void Awake()
     {
         Obstrucle_GoalPostWinCollider.OnGoalScore += OnGoalVFX;
+
+        goalMaterial.color = new Color(goalMaterial.color.r, goalMaterial.color.g, goalMaterial.color.b, 0f);
     }
 
     public AnimationCurve SetGoalPostGoalCurve()
@@ -37,5 +40,10 @@ public class GoalPost : MonoBehaviour
     private void OnGoalVFX()
     {
         goalMaterial.DOColor(new Color(goalMaterial.color.r, goalMaterial.color.g, goalMaterial.color.b, 0.5f), 0.1f).SetLoops(8, LoopType.Yoyo);
+
+        DOTween.Sequence().AppendInterval(0.5f).AppendCallback(() =>
+        {
+            confettiEffects.ForEach(t => t.Play());
+        });
     }
 }
