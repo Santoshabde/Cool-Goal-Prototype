@@ -5,6 +5,8 @@ using UnityEngine;
 public class BallController : MonoBehaviour
 {
     [SerializeField] private float ballSpeed;
+    [SerializeField] private Transform ballHitVFXSpawnPoint;
+    [SerializeField] private ParticleSystem hitVFXToSpawn;
 
     private (Vector3, Vector3, Vector3, Vector3) bezierPointToFollow;
     private bool moveTheBall = false;
@@ -26,6 +28,7 @@ public class BallController : MonoBehaviour
     {
         executeUpdate = true;
         yield return new WaitForSeconds(0.6f);
+        ParticleSystem spawnedVFX = Instantiate(hitVFXToSpawn, ballHitVFXSpawnPoint.position, Quaternion.identity);
         moveTheBall = true;
     }
 

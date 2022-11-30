@@ -7,6 +7,8 @@ public class GameStateController : StateMachine
     [SerializeField] private InputController inputController;
     [SerializeField] private SubLevelLoader subLevelLoader;
 
+    public bool firstGameOnAppOpen { get; set; }
+
     public InputController InputController => inputController;
     public SubLevelLoader SubLevelLoader => subLevelLoader;
 

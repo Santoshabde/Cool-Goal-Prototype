@@ -13,6 +13,7 @@ public class InputController : SerializedSingleton<InputController>
     public float DragAmount => dragAmount;
 
     public Action ShootActionActivated;
+    public Action OnScreenTouchDown;
 
     private bool blockInput;
     private void Update()
@@ -36,6 +37,7 @@ public class InputController : SerializedSingleton<InputController>
 
     private void EventOnMouseDown(Vector3 mousePointPosition)
     {
+        OnScreenTouchDown?.Invoke();
         initialPointPosition = mousePointPosition;
         dragAmount = 0;
     }
