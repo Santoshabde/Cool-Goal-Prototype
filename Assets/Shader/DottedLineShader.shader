@@ -47,9 +47,6 @@ Shader "Unlit/DottedLineShader"
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = v.uv;
-                _Offset -= _Time.y;
-                if(_Offset < 2)
-                 _Offset += 40;
                 o.uv.x = (o.uv.x + _Offset) * _RepeatCount * (1.0f + _Spacing);
                 o.color = v.color;
 

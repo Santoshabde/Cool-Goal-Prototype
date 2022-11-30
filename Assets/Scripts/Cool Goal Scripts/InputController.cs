@@ -14,8 +14,12 @@ public class InputController : SerializedSingleton<InputController>
 
     public Action ShootActionActivated;
 
+    private bool blockInput;
     private void Update()
     {
+        if (blockInput)
+            return;
+
         if(Input.GetMouseButtonDown(0))
         {
             EventOnMouseDown(Input.mousePosition);
@@ -45,6 +49,10 @@ public class InputController : SerializedSingleton<InputController>
     {
         dragAmount = (mousePointPosition.x - initialPointPosition.x);
         dragAmount = dragAmount.Clamp01Range(0, maxDragAmount);
-        Debug.Log("Drag Amount: " + dragAmount);
+    }
+
+    public void BlockInput(bool value)
+    {
+        blockInput = value;
     }
 }

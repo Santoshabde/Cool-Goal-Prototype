@@ -8,6 +8,7 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] private bool isTesting;
     [SerializeField] private string currentLevelToLoad;
 
+    public static string currentLevel = null;
 
     void Start()
     {
@@ -19,7 +20,8 @@ public class LevelLoader : MonoBehaviour
             {
                 if(data.Value.sceneToLoad == currentLevelToLoad)
                 {
-                    SceneManager.LoadScene(currentLevelToLoad);
+                    SceneManager.LoadScene(data.Value.sceneToLoad);
+                    currentLevel = data.Key;
                     break;
                 }
             }

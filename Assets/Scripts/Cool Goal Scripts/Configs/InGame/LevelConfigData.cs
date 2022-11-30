@@ -23,7 +23,14 @@ public class SubLevelData
 {
     public string subLevelID;
     public Vector3 playerBallSetPosition;
+
+    [Header("Goal Post Settings")]
     public Vector3 goalPostPosition;
     public Vector3 goalPostRotation;
     public Vector3 goalpostScale;
+
+    [Header("Camera And Lighting Settings")]
+    public Vector3 cameraPositon;
+    public Vector3 cameraRotation;
+    public float cameraFOV;
 }

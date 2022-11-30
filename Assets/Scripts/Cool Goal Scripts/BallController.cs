@@ -69,4 +69,24 @@ public class BallController : MonoBehaviour
             currentHitColliderLength = hitColliders.Length;
         }
     }
+    
+    public void ResetBallOnLevelSubLevelComplete()
+    {
+        StartCoroutine(ResetBallIEnunm());
+    }
+
+    private IEnumerator ResetBallIEnunm()
+    {
+        time = 0;
+        executeUpdate = false;
+        moveTheBall = false;
+
+        float resetRigidbodyTime = 2f;
+        while(resetRigidbodyTime > 0)
+        {
+            resetRigidbodyTime -= Time.deltaTime;
+            GetComponent<Rigidbody>().isKinematic = true;
+            yield return null;
+        }
+    }
 }
