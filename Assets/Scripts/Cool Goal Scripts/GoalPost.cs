@@ -19,7 +19,7 @@ public class GoalPost : MonoBehaviour
 
     private void Awake()
     {
-        Obstrucle_GoalPostWinCollider.OnGoalScore += OnGoalVFX;
+        Trigger_GoalPostWinTriggerReactor.OnGoalScore += OnGoalVFX;
 
         goalMaterial.color = new Color(goalMaterial.color.r, goalMaterial.color.g, goalMaterial.color.b, 0f);
     }

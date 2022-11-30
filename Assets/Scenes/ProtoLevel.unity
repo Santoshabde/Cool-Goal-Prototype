@@ -2448,7 +2448,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 704668397}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f24e14822dfaa7246a4283acdf9f004d, type: 3}
+  m_Script: {fileID: 11500000, guid: e37d38cbb0681a647bd0fc454dcd09f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &711497624
@@ -7505,7 +7505,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoalPost
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 704668398, guid: 3a28a2ee70690424b9fd9e0604b4fadd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3a28a2ee70690424b9fd9e0604b4fadd, type: 3}
 --- !u!114 &4461409474051117123 stripped
 MonoBehaviour:

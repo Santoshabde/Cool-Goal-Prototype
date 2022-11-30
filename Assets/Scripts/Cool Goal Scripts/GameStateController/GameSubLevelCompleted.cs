@@ -12,9 +12,6 @@ public class GameSubLevelCompleted : BaseState
 
     public override void Enter()
     {
-        //May be play some effects
-        //
-
         gameStateController.StartCoroutine(SubLevelCompletedAction());
     }
 
@@ -32,11 +29,12 @@ public class GameSubLevelCompleted : BaseState
     {
         bool nextSubLevelAvailableInSameLevel = gameStateController.SubLevelLoader.IncrementSubLevel();
 
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1.5f);
 
+        if(nextSubLevelAvailableInSameLevel)
         InGameLevelTransitions.Instance.SubLevelTransition(SubLevelLoader.nextSubLevelIndex + 1);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         //If level completed
         if (!nextSubLevelAvailableInSameLevel)

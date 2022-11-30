@@ -63,8 +63,7 @@ public class BallController : MonoBehaviour
     {
         if (GameStateController.Instance.CurrentState.GetType() == typeof(GameSubLevelProgress))
         {
-            if (other.tag == "WinCollider")
-                other.GetComponent<Obstrucle_GoalPostWinCollider>().OnBallCollision(other.ClosestPoint(transform.position));
+            other.GetComponent<IBallTriggerEnterReactor>().OnBallTriggerEnter(other.ClosestPoint(transform.position));
         }
     }
 

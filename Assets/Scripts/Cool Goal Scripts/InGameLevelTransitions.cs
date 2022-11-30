@@ -31,11 +31,11 @@ public class InGameLevelTransitions : MonoBehaviour
         imageToScale.SetActive(true);
 
         Sequence transitionSequence = DOTween.Sequence();
-        transitionSequence.Append(imageToScale.transform.DOScale(Vector3.one * 1.3f, 1f));
+        transitionSequence.Append(imageToScale.transform.DOScale(Vector3.one * 1.3f, 0.3f));
         transitionSequence.Append(bgImage.DOFade(1, 0.3f));
-        transitionSequence.AppendInterval(2.5f);
+        transitionSequence.AppendInterval(1.5f);
         transitionSequence.Append(bgImage.DOFade(0, 0.3f));
-        transitionSequence.Append(imageToScale.transform.DOScale(Vector3.one * 23f, 1f));
+        transitionSequence.Append(imageToScale.transform.DOScale(Vector3.one * 23f, 0.3f));
 
         transitionSequence.OnComplete(() => imageToScale.SetActive(false));
     }

@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstrucle_GoalPostWinCollider : MonoBehaviour
+public class Trigger_GoalPostWinTriggerReactor : MonoBehaviour, IBallTriggerEnterReactor
 {
     public static Action<Vector3> OnGoalScore;
 
-    public void OnBallCollision(Vector3 contactPointPosition)
+    public void OnBallTriggerEnter(Vector3 contactPoint)
     {
-        OnGoalScore?.Invoke(contactPointPosition);
+        OnGoalScore?.Invoke(contactPoint);
         GameStateController.Instance.SwitchState(
             new GameSubLevelCompleted(GameStateController.Instance));
     }
