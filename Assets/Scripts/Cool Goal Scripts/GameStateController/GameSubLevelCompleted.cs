@@ -29,9 +29,14 @@ public class GameSubLevelCompleted : BaseState
     {
         bool nextSubLevelAvailableInSameLevel = gameStateController.SubLevelLoader.IncrementSubLevel();
 
+        yield return new WaitForSeconds(0.3f);
+        UIManager.Instance.DisplayCard<GoalAppreciationCard>();
+
         yield return new WaitForSeconds(1.5f);
 
-        if(nextSubLevelAvailableInSameLevel)
+        UIManager.Instance.CloseCard<GoalAppreciationCard>();
+
+        if (nextSubLevelAvailableInSameLevel)
         InGameLevelTransitions.Instance.SubLevelTransition(SubLevelLoader.nextSubLevelIndex + 1);
 
         yield return new WaitForSeconds(1f);
