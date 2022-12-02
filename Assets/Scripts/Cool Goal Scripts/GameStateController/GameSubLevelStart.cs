@@ -13,6 +13,8 @@ public class GameSubLevelStart : BaseState
     public override void Enter()
     {
         gameStateController.SubLevelLoader.LoadSubLevel();
+        //Had to give some delay avoidoing race conditons. Need to find a proper solution
+        gameStateController.StartCoroutine(UpdateHUD());
         gameStateController.InputController.BlockInput(false);
         gameStateController.SwitchState(new GameSubLevelProgress(gameStateController));
     }
@@ -25,5 +27,11 @@ public class GameSubLevelStart : BaseState
     public override void Tick(float deltaTime)
     {
         
+    }
+
+    IEnumerator UpdateHUD()
+    {
+        yield return new WaitForSeconds(0.2f);
+        HUDController.Instance.UpdateLevelInfoHUD((LevelLoader.CurrentLevelIndex + 1).ToString(), (LevelLoader.CurrentLevelIndex + 2).ToString(), SubLevelLoader.nextSubLevelIndex);
     }
 }

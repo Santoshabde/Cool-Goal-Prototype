@@ -28,13 +28,13 @@ public class SubLevelLoader : MonoBehaviour
         if (testSubLevel)
         {
             currentSubLevelID = subLevelIdToTest;
-            subLevelData = LevelConfigData.data[LevelLoader.currentLevel].subLevelData.Find(t => t.subLevelID == currentSubLevelID);
-            nextSubLevelIndex = LevelConfigData.data[LevelLoader.currentLevel].subLevelData.IndexOf(subLevelData);
+            subLevelData = LevelConfigData.data[LevelLoader.CurrentLevelID].subLevelData.Find(t => t.subLevelID == currentSubLevelID);
+            nextSubLevelIndex = LevelConfigData.data[LevelLoader.CurrentLevelID].subLevelData.IndexOf(subLevelData);
         }
         else
         {
             //Always first sublevel-level is picked by default
-            subLevelData = LevelConfigData.data[LevelLoader.currentLevel].subLevelData[nextSubLevelIndex];
+            subLevelData = LevelConfigData.data[LevelLoader.CurrentLevelID].subLevelData[nextSubLevelIndex];
             currentSubLevelID = subLevelData.subLevelID;
         }
 
@@ -44,7 +44,7 @@ public class SubLevelLoader : MonoBehaviour
     private void PrepareSubLevel(int subLevelIndex)
     {
         SubLevelData subLevelData;
-        subLevelData = LevelConfigData.data[LevelLoader.currentLevel].subLevelData[subLevelIndex];
+        subLevelData = LevelConfigData.data[LevelLoader.CurrentLevelID].subLevelData[subLevelIndex];
 
         PrepareSubLevel(subLevelData);
     }
