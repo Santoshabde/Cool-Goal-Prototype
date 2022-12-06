@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2024805484786833051}
   - component: {fileID: 853459057704212842}
   - component: {fileID: 853459057704212841}
+  - component: {fileID: 919132148245141501}
   m_Layer: 0
   m_Name: WinterTree
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 511565018334295886}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.988, y: -0.396, z: -6.8843284}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -123,6 +124,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8161075, y: 2.0833519, z: 0.8000493}
   m_Center: {x: 0.0059276223, y: 1.0417165, z: -0.0038979053}
+--- !u!114 &919132148245141501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511565018334295886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c5b27b007a58c4e8b0c0a918c55b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finalTreeRotation_1: {x: 0, y: 0, z: 3}
+  finalTreeRotation_2: {x: 0, y: 0, z: -3}
+  animationEventsCount: 4
+  singleEventTweenTime: 0.15
 --- !u!1 &664755511505961258
 GameObject:
   m_ObjectHideFlags: 0

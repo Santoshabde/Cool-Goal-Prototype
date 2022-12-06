@@ -65,6 +65,10 @@ public class SubLevelLoader : MonoBehaviour
         player.transform.localPosition = LOCAL_PLAYER_POSITION;
         ball.transform.localPosition = LOCAL_BALL_POSITION;
 
+        mainCamera.transform.position = data.cameraPositon;
+        mainCamera.transform.rotation = Quaternion.Euler(data.cameraRotation);
+        mainCamera.fieldOfView = data.cameraFOV;
+
         subLevelData.Find(t => t.subLevelID == data.subLevelID).subLevel.SetActive(true);
     }
 

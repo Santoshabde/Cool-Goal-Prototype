@@ -20,7 +20,7 @@ public class InGameLevelTransitions : MonoBehaviour
 
     public void SubLevelTransition(int finalSubLevelIndex)
     {
-        if(finalSubLevelIndex >= subLevelImageData.Count)
+        if(finalSubLevelIndex > subLevelImageData.Count)
         {
             finalSubLevelIndex = subLevelImageData.Count - 1;
         }
