@@ -56,3 +56,14 @@ MonoBehaviour:
       cameraPositon: {x: 0.10514426, y: 6.342492, z: -12.293073}
       cameraRotation: {x: 55.450447, y: 0.34375298, z: -0.000039236005}
       cameraFOV: 60
+  - levelID: 2
+    sceneToLoad: ProtoLevel_City
+    subLevelData:
+    - subLevelID: 1
+      playerBallSetPosition: {x: -0.157, y: 0, z: -11.27107}
+      goalPostPosition: {x: 0.05, y: 0.55, z: -3.4}
+      goalPostRotation: {x: 0, y: -90, z: 0}
+      goalpostScale: {x: 0, y: 0.5420582, z: 0.8533415}
+      cameraPositon: {x: 0.10514426, y: 6.342492, z: -12.293073}
+      cameraRotation: {x: 55.450447, y: 0.34375298, z: -0.000039236005}
+      cameraFOV: 60

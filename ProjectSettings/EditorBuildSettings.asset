@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ProtoLevel.unity
     guid: fe3929d1f23a5d74aaeefcb71d19a8c4
+  - enabled: 1
+    path: Assets/Scenes/ProtoLevel_City.unity
+    guid: 7c8f94a76d705884994d34f6e1ae9ea3
   m_configObjects: {}
