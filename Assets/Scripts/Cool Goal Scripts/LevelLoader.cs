@@ -11,7 +11,7 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] private GameObject loadingScreenCanvas;
     [SerializeField] private GameObject loadingScreen;
 
-    private static int currentLevelIndex;
+    public static int currentLevelIndex;
     private static string currentLevelID;
 
     public static int CurrentLevelIndex => currentLevelIndex;
@@ -100,7 +100,7 @@ public class LevelLoader : MonoBehaviour
         Debug.Log("Scene Loaded DONE");
     }
 
-    private string GetLevelID(int currentLevelIndex)
+    public string GetLevelID(int currentLevelIndex)
     {
         Dictionary<string, LevelData> levelData = LevelConfigData.data;
 

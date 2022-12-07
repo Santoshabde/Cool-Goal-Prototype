@@ -12,7 +12,7 @@ public class GameMainLevelComplete : BaseState
 
     public override void Enter()
     {
-
+        UIManager.Instance.OpenDialog<LevelCompletionDialog>();
     }
 
     public override void Exit()

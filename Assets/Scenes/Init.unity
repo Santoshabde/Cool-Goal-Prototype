@@ -311,8 +311,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e47eef6177bf2d40a3c70470e6ca70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTesting: 1
-  currentLevelIDToLoad: 2
+  isTesting: 0
+  currentLevelIDToLoad: 1
   loadingScreenCanvas: {fileID: 520434378}
   loadingScreen: {fileID: 1020198814}
 --- !u!1 &1020198814

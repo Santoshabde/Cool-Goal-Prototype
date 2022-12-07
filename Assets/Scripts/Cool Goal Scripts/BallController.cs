@@ -18,6 +18,11 @@ public class BallController : MonoBehaviour
         PlayerShootCurveController.OnFinalShot += OnFinalShot;
     }
 
+    private void OnDestroy()
+    {
+        PlayerShootCurveController.OnFinalShot -= OnFinalShot;
+    }
+
     private void OnFinalShot((Vector3, Vector3, Vector3, Vector3) bezierPointSet)
     {
         bezierPointToFollow = bezierPointSet;

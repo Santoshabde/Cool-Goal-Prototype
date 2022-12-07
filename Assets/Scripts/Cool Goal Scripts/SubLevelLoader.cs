@@ -19,7 +19,6 @@ public class SubLevelLoader : MonoBehaviour
     [SerializeField] private List<SubLevel> subLevelData;
 
     public static int nextSubLevelIndex = 0;
-
     public static string currentSubLevelID = "";
 
     public void LoadSubLevel()
