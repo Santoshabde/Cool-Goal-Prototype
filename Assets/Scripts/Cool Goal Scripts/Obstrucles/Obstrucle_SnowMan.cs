@@ -8,7 +8,7 @@ public class Obstrucle_SnowMan : MonoBehaviour, IBallCollidable
 
     public void OnBallCollision(Vector3 contactPointPosition)
     {
-        objectsToSeperate.ForEach(t => t.transform.parent = null);
+        objectsToSeperate.ForEach(t => t.transform.SetParent(GameStateController.Instance.SubLevelLoader.GetCurrentSubLevelParent()));
         foreach (var item in objectsToSeperate)
         {
             Rigidbody rb = item.AddComponent<Rigidbody>();

@@ -85,6 +85,11 @@ public class SubLevelLoader : MonoBehaviour
 
         return hasNextSubLevel;
     }
+
+    public Transform GetCurrentSubLevelParent()
+    {
+        return subLevelData.Find(t => t.subLevelID == currentSubLevelID).subLevel.transform;
+    }
 }
 
 [System.Serializable]

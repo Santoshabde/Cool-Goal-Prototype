@@ -8,9 +8,10 @@ public class RigidBodyGenerator : MonoBehaviour
     [SerializeField] private float minGenerationTimeGap;
     [SerializeField] private float maxGenerationTimeGap;
 
-    private void Awake()
+    private Coroutine generationCoroutine = null;
+    private void OnEnable()
     {
-        StartCoroutine(StartGeneration());
+        generationCoroutine = StartCoroutine(StartGeneration());
     }
 
     private IEnumerator StartGeneration()
@@ -20,8 +21,15 @@ public class RigidBodyGenerator : MonoBehaviour
             //TODO:Santosh Need Object pooling Here
             GameObject generated = Instantiate(randomBodies[Random.Range(0, randomBodies.Count)].gameObject, transform.position, Quaternion.identity);
             generated.transform.forward = transform.forward;
+            generated.transform.SetParent(GameStateController.Instance.SubLevelLoader.GetCurrentSubLevelParent());
 
             yield return new WaitForSeconds(Random.Range(minGenerationTimeGap, maxGenerationTimeGap));
         }
+    }
+
+    private void OnDisable()
+    {
+        if (generationCoroutine != null)
+            StopCoroutine(generationCoroutine);
     }
 }
