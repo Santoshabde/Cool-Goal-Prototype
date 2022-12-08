@@ -50669,6 +50669,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2470536709070585861, guid: 58519b399853f0042ad9789f47947305, type: 3}
+      propertyPath: ballMesh
+      value: 
+      objectReference: {fileID: 6845674325139530160}
+    - target: {fileID: 2470536709070585861, guid: 58519b399853f0042ad9789f47947305, type: 3}
       propertyPath: ballHitEffect
       value: 
       objectReference: {fileID: 0}
@@ -50676,6 +50680,14 @@ PrefabInstance:
       propertyPath: hitVFXToSpawn
       value: 
       objectReference: {fileID: 19800000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
+    - target: {fileID: 2470536709070585861, guid: 58519b399853f0042ad9789f47947305, type: 3}
+      propertyPath: ballTrailRenderer
+      value: 
+      objectReference: {fileID: 6845674325139530158}
+    - target: {fileID: 2470536709070585861, guid: 58519b399853f0042ad9789f47947305, type: 3}
+      propertyPath: goalHitVFXToSpawn
+      value: 
+      objectReference: {fileID: 198240864072996638, guid: 1805b6a59d8bf1e4fabb266117b0e2cb, type: 3}
     - target: {fileID: 2470536709070585861, guid: 58519b399853f0042ad9789f47947305, type: 3}
       propertyPath: ballHitVFXSpawnPoint
       value: 
@@ -50879,6 +50891,11 @@ TrailRenderer:
 --- !u!4 &6845674325139530159 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5198418650969851797, guid: 58519b399853f0042ad9789f47947305, type: 3}
+  m_PrefabInstance: {fileID: 6845674325139530154}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6845674325139530160 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5107882342709763094, guid: 58519b399853f0042ad9789f47947305, type: 3}
   m_PrefabInstance: {fileID: 6845674325139530154}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &6892109200126838910

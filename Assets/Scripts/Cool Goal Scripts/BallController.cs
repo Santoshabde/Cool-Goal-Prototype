@@ -5,8 +5,11 @@ using UnityEngine;
 public class BallController : MonoBehaviour
 {
     [SerializeField] private float ballSpeed;
+    [SerializeField] private MeshRenderer ballMesh;
+    [SerializeField] private TrailRenderer ballTrailRenderer;
     [SerializeField] private Transform ballHitVFXSpawnPoint;
     [SerializeField] private ParticleSystem hitVFXToSpawn;
+    [SerializeField] private ParticleSystem goalHitVFXToSpawn;
 
     private (Vector3, Vector3, Vector3, Vector3) bezierPointToFollow;
     private bool moveTheBall = false;
@@ -71,6 +74,14 @@ public class BallController : MonoBehaviour
     {
         if (GameStateController.Instance.CurrentState.GetType() == typeof(GameSubLevelProgress))
         {
+            if (other.tag == "WinCollider")
+            {
+                ParticleSystem hitPS = Instantiate(goalHitVFXToSpawn, transform.position, Quaternion.identity);
+                hitPS.Play();
+                ballMesh.enabled = false;
+                ballTrailRenderer.enabled = false;
+            }
+
             other.GetComponent<IBallTriggerEnterReactor>().OnBallTriggerEnter(other.ClosestPoint(transform.position));
         }
     }
@@ -102,6 +113,8 @@ public class BallController : MonoBehaviour
         {
             resetRigidbodyTime -= Time.deltaTime;
             GetComponent<Rigidbody>().isKinematic = true;
+            ballTrailRenderer.enabled = true;
+            ballMesh.enabled = true;
             yield return null;
         }
     }
