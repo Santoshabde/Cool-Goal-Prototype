@@ -50687,7 +50687,7 @@ PrefabInstance:
     - target: {fileID: 2470536709070585861, guid: 58519b399853f0042ad9789f47947305, type: 3}
       propertyPath: goalHitVFXToSpawn
       value: 
-      objectReference: {fileID: 198240864072996638, guid: 1805b6a59d8bf1e4fabb266117b0e2cb, type: 3}
+      objectReference: {fileID: 198499209413112314, guid: 2177f9228a964724686d4ae284697ecf, type: 3}
     - target: {fileID: 2470536709070585861, guid: 58519b399853f0042ad9789f47947305, type: 3}
       propertyPath: ballHitVFXSpawnPoint
       value: 
